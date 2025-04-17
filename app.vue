@@ -8,7 +8,7 @@ const isSearchDialogOpen = ref(false)
     @update:close="isSearchDialogOpen = $event"
     @update:open="isSearchDialogOpen = $event"
   />
-  <main class="min-h-screen px-2 py-1">
+  <main class="min-h-screen py-1">
     <NuxtPage />
   </main>
   <footer></footer>
