@@ -22,7 +22,7 @@
     var(--color-background)
   );
   background-size: 200% 200%;
-  animation: gradient 10s ease-in-out infinite;
+  animation: gradient 40s ease-in-out infinite;
 }
 
 @keyframes gradient {
