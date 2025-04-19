@@ -1,12 +1,22 @@
 <script setup lang="ts">
-import type { ExamDetails } from "./types/Exam"
+import type { ExamDetails, Exam } from "./types/Exam"
 
 const isSearchDialogOpen = ref(false)
 
 const store = examsStore()
+
+const { data: exams, status: examsStatus } = await useAsyncData("exams", () =>
+  $fetch("/api/exams/all")
+)
+
+if (examsStatus.value === "success") {
+  store.setExams(exams.value as Exam[])
+}
+
 watch(
   () => store.exams,
   async (newExams) => {
+    store.isLoadingExamsDetails = true
     if (newExams.length > 0) {
       console.log("Updating exam details...")
       for (const exam of store.exams) {
@@ -16,9 +26,9 @@ watch(
 
         store.addExamDetails(details)
       }
+      console.log("Successfully finished updating exam details")
     }
-
-    console.log(store.examsDetails)
+    store.isLoadingExamsDetails = false
   },
   { immediate: true }
 )

@@ -5,7 +5,7 @@ export const examsStore = defineStore("exams", {
   state: () => ({
     exams: [] as Exam[],
     examsDetails: [] as ExamDetails[],
-    isLoadingDetails: false,
+    isLoadingExamsDetails: true,
   }),
 
   actions: {
@@ -14,6 +14,9 @@ export const examsStore = defineStore("exams", {
     },
 
     addExamDetails(examDetails: ExamDetails) {
+      if (this.examsDetails.some((exam) => exam.name === examDetails.name)) {
+        return
+      }
       this.examsDetails.push(examDetails)
     },
   },
