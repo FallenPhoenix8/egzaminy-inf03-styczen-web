@@ -91,7 +91,7 @@ watchOnce(emblaMainApi, (emblaMainApi) => {
     </UICarousel>
 
     <div
-      class="flex lg:max-w-xl items-center justify-center lg:justify-evenly my-10 flex-wrap gap-2"
+      class="flex w-full items-center justify-center my-10 flex-wrap gap-2 lg:gap-10"
     >
       <NuxtLink :to="props.exam.url.exam" target="_blank" download>
         <UIButton tabindex="-1">Pobierz arkusz</UIButton>
