@@ -2,7 +2,7 @@ import tailwindcss from "@tailwindcss/vite"
 import { fileURLToPath } from "url"
 import { dirname } from "path"
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+// const __dirname = dirname(fileURLToPath(import.meta.url))
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/tailwind.css"],
 
   runtimeConfig: {
-    projectRoot: __dirname,
+    projectRoot: process.cwd(),
   },
 
   app: {
