@@ -45,7 +45,8 @@ watch(
     <NuxtPage />
   </main>
   <footer class="text-muted-foreground p-2">
-    <h3>
+    <hr />
+    <h3 class="text-start">
       &copy; {{ new Date().getFullYear() }} Łukasz Kwiecień - wygląd i działanie
       strony
     </h3>
@@ -68,10 +69,10 @@ watch(
       </li>
     </ul>
     <hr />
-    <div>
+    <h3 class="text-start">
       &copy;
       <a href="https://cke.gov.pl/egzamin-zawodowy/">CKE</a>
       - arkusze egzaminacyjne
-    </div>
+    </h3>
   </footer>
 </template>
