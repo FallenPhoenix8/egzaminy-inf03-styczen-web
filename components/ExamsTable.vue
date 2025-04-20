@@ -23,7 +23,11 @@ const props = defineProps<{ exams: Exam[]; status: AsyncDataRequestStatus }>()
       >
         <UITableCell>{{ index + 1 }}</UITableCell>
         <UITableCell>{{ exam.name }}</UITableCell>
-        <UITableCell>TODO</UITableCell>
+        <UITableCell>
+          <NuxtLink :to="`/exams/${exam.name}`">
+            <UIButton>Zobacz szczegóły</UIButton>
+          </NuxtLink>
+        </UITableCell>
       </UITableRow>
       <UITableRow v-else>
         <UITableCell>

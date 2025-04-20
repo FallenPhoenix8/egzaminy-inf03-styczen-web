@@ -19,6 +19,10 @@ if (!examsStore().isLoadingExamsDetails) {
     }
   )
 }
+
+useHead({
+  title: `Egzamin INF.03 - ${exam.value?.name}`,
+})
 </script>
 
 <template>
