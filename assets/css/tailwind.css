@@ -129,4 +129,12 @@
   a {
     @apply cursor-pointer;
   }
+
+  h2 {
+    @apply text-2xl text-center font-semibold;
+  }
+
+  h3 {
+    @apply text-xl text-center font-semibold;
+  }
 }

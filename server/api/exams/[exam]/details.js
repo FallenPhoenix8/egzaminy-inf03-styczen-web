@@ -205,12 +205,16 @@ export default defineEventHandler(async (event) => {
     .readdirSync(examPath)
     .filter((file) => file.includes("zo") && file.endsWith(".pdf"))[0]
 
+  const examPdf = fs
+    .readdirSync(examPath)
+    .filter((file) => !file.includes("zo") && file.endsWith(".pdf"))[0]
+
   const details = {
     name: exam,
     text: await getExamText(exam),
     url: {
-      exam: `/exams/${exam}`,
-      solution: `/exams/${exam}/${solution}`,
+      exam: `/exams/${exam}/${examPdf}`,
+      gradingRules: `/exams/${exam}/${solution}`,
       archive: `/exams/${exam}/${archive}`,
     },
     previewImages: previewImages.map(

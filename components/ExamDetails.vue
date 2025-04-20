@@ -26,19 +26,15 @@ watchOnce(emblaMainApi, (emblaMainApi) => {
   onSelect()
   emblaMainApi.on("select", onSelect)
   emblaMainApi.on("reInit", onSelect)
-})
 
-onMounted(() => {
-  emblaMainApi.value?.scrollTo(2)
+  emblaMainApi.scrollTo(2)
   emblaThumbnailApi.value?.scrollTo(2)
 })
 </script>
 <template>
   <div v-if="props.exam">
-    <h2 class="text-2xl text-center font-semibold">
-      Egzamin {{ props.exam.name }}
-    </h2>
-    <h3 class="text-xl text-center font-semibold">Podgląd arkusza</h3>
+    <h2>Egzamin {{ props.exam.name }}</h2>
+    <h3>Podgląd arkusza</h3>
     <UICarousel
       class="relative mx-auto max-w-lg"
       @init-api="(val) => (emblaMainApi = val)"
@@ -61,8 +57,9 @@ onMounted(() => {
           </UICard>
         </UICarouselItem>
       </UICarouselContent>
-      <UICarouselNext />
-      <UICarouselPrevious />
+
+      <UICarouselNext class="hidden lg:block" />
+      <UICarouselPrevious class="hidden lg:block" />
     </UICarousel>
 
     <UICarousel
@@ -92,5 +89,21 @@ onMounted(() => {
         </UICarouselItem>
       </UICarouselContent>
     </UICarousel>
+
+    <div
+      class="flex lg:max-w-xl items-center justify-center lg:justify-evenly my-10 flex-wrap gap-2"
+    >
+      <NuxtLink :to="props.exam.url.exam" target="_blank" download>
+        <UIButton tabindex="-1">Pobierz arkusz</UIButton>
+      </NuxtLink>
+
+      <NuxtLink :to="props.exam.url.archive" target="_blank" download>
+        <UIButton tabindex="-1">Pobierz materiały</UIButton>
+      </NuxtLink>
+
+      <NuxtLink :to="props.exam.url.gradingRules" target="_blank" download>
+        <UIButton tabindex="-1">Pobierz zasady oceniania</UIButton>
+      </NuxtLink>
+    </div>
   </div>
 </template>
