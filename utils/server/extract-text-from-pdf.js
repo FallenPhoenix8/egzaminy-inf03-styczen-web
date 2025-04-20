@@ -13,8 +13,7 @@ export default async function extractTextFromPDF(pdfPath) {
     const page = await browser.newPage()
 
     // Create a simple HTML page with PDF.js viewer
-    const htmlContent = `
-      <!DOCTYPE html>
+    const htmlContent = `<!DOCTYPE html>
       <html>
       <head>
         <title>PDF Text Extractor</title>
