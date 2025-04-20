@@ -61,7 +61,7 @@ const emit = defineEmits(["update:isOpenSearchDialog"])
 
 <template>
   <nav
-    class="navbar flex sticky bg-background/80 backdrop-blur-sm items-center justify-between space-y-2 sm:space-y-0 flex-wrap border-1 border-secondary-subtle p-2 z-50"
+    class="navbar flex sticky bg-background/80 backdrop-blur-sm items-center justify-between space-y-2 space-x-2 sm:space-y-0 flex-wrap border-1 border-secondary-subtle p-2 z-50"
     :style="navBarStyleProperties"
   >
     <UINavigationMenu>
@@ -100,7 +100,7 @@ const emit = defineEmits(["update:isOpenSearchDialog"])
 </template>
 
 <style scoped>
-@media (max-width: 480px) {
+@media (max-width: 422px) {
   .search-button {
     order: 1;
   }
