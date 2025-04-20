@@ -2,6 +2,7 @@
 import { useMagicKeys } from "@vueuse/core"
 import type { ExamDetails } from "~/types/Exam"
 import Skeleton from "./ui/skeleton/Skeleton.vue"
+import navigateToDetails from "~/utils/frontend/navigateToDetails"
 
 const props = defineProps<{ open: boolean }>()
 const emit = defineEmits(["update:close", "update:open"])
@@ -22,7 +23,7 @@ useMagicKeys({
 
 function handleCommandSelect(examName: string) {
   emit("update:close", false)
-  navigateTo(`/exams/${examName}`)
+  navigateToDetails(examName)
 }
 
 const query = ref("")
