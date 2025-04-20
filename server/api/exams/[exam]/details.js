@@ -6,7 +6,6 @@ import getExamText from "~/utils/server/get-exam-text"
 async function generatePreviewImages(pdfPath) {
   try {
     // Create output directory if it doesn't exist
-    const baseName = path.basename(pdfPath, ".pdf")
     const outputDir = path.join(path.dirname(pdfPath), "preview")
 
     if (!fs.existsSync(outputDir)) {
@@ -197,9 +196,18 @@ export default defineEventHandler(async (event) => {
 
   const previewImages = fs.readdirSync(previewImagesPath)
 
-  const archive = fs
-    .readdirSync(examPath)
-    .filter((file) => !file.includes("zo") && !file.endsWith(".pdf"))[0]
+  const archiveExtensions = [".zip", ".7z", ".rar", ".tar", ".tar.gz"]
+
+  const archive = fs.readdirSync(examPath).filter((file) => {
+    let isArchive = false
+    for (const extension of archiveExtensions) {
+      if (file.endsWith(extension)) {
+        isArchive = true
+        break
+      }
+    }
+    return isArchive
+  })[0]
 
   const solution = fs
     .readdirSync(examPath)

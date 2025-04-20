@@ -22,6 +22,13 @@ export default defineNuxtConfig({
         lang: "pl",
       },
       title: "Egzaminy INF.03",
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/favicon.ico",
+        },
+      ],
     },
   },
 
@@ -29,7 +36,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["shadcn-nuxt", "@nuxtjs/color-mode", "@pinia/nuxt"],
+  modules: ["shadcn-nuxt", "@nuxtjs/color-mode", "@pinia/nuxt", "@nuxt/fonts"],
   shadcn: {
     /**
      * Prefix for all the imported component

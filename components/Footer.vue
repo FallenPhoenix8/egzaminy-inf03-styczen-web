@@ -27,6 +27,16 @@ import { MailOpen, Github } from "lucide-vue-next"
         </a>
       </li>
     </ul>
+
+    <h4 class="text-lg font-semibold">
+      Kod źródłowy znajduje się na
+      <a
+        href="https://github.com/FallenPhoenix8/egzaminy-inf03-styczen-web"
+        class="underline"
+        target="_blank"
+        >repozytorium GitHub</a
+      >
+    </h4>
     <hr />
     <h3 class="text-start">
       &copy;
