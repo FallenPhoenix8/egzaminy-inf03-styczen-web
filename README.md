@@ -1,4 +1,27 @@
-# Nuxt Minimal Starter
+# Description
+
+## PL
+
+Aplikacja do wyszukiwania i pobierania egzaminów INF.03
+Prosta aplikacja umożliwiająca szybkie wyszukiwanie oraz pobieranie arkuszy egzaminacyjnych INF.03 (Tworzenie i administrowanie stronami internetowymi). Użytkownik może filtrować egzaminy według roku, sesji i typu dokumentu (arkusz, rozwiązanie, załączniki).
+
+## EN
+
+INF.03 Exam Search and Download App
+A simple application for quickly searching and downloading INF.03 exam papers (Web development and administration). Users can filter exams by year, session, and document type (exam, solution, attachments).
+
+# Technologies
+
+## Technologies used
+
+- Nuxt (Vue 3)
+- Tailwind CSS
+- TypeScript
+- Puppeteer and PDF.js(for PDF text extraction)
+- Pinia (for state management)
+- Reka UI (for UI components, also known as [shadcn/vue](https://shadcn-vue.com/))
+
+# Getting started
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
