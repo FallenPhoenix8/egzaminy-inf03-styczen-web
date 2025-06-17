@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+      <html>
+      <head>
+        <title>PDF Text Extractor</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+      </head>
+      <body>
+        <script>
+          // Initialize PDF.js
+          const pdfjsLib = window['pdfjs-dist/build/pdf'];
+          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+          async function extractTextFromPDF(pdfData) {
+            const loadingTask = pdfjsLib.getDocument({data: pdfData});
+            const pdf = await loadingTask.promise;
+            let textContent = '';
+
+            // Loop through each page and extract text
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+              const page = await pdf.getPage(pageNum);
+              const textContentPage = await page.getTextContent();
+              const textItems = textContentPage.items;
+
+              // Concatenate text items
+              for (const item of textItems) {
+                textContent += item.str + ' ';
+              }
+            }
+
+            return textContent.trim();
+          }
+
+          // Function to be called by Puppeteer to load PDF and extract text
+          window.extractText = async function(base64PDF) {
+            const pdfData = atob(base64PDF);
+            const buffer = new Uint8Array(pdfData.length);
+            for (let i = 0; i < pdfData.length; i++) {
+              buffer[i] = pdfData.charCodeAt(i) & 0xFF;
+            }
+            const text = await extractTextFromPDF(buffer);
+            return text;
+          };
+        </script>
+      </body>
+      </html>
+    

@@ -13,8 +13,9 @@ const examsDetails = ref([] as ExamDetails[])
 
 useMagicKeys({
   passive: false,
-  onEventFired(e) {
-    if (e.ctrlKey && e.key === "f" && e.type === "keydown") {
+  onEventFired(event: Event) {
+    const e = event as KeyboardEvent
+    if ((e.ctrlKey || e.metaKey) && e.key === "f" && e.type === "keydown") {
       e.preventDefault()
       emit("update:open", true)
     }
