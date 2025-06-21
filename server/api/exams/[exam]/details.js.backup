@@ -285,17 +285,14 @@ function isPreviewImagesExist(previewImagesPath) {
 
 export default defineEventHandler(async (event) => {
   try {
-    const { exam: rawExam } = event.context.params
+    const { exam } = event.context.params
     
-    if (!rawExam) {
+    if (!exam) {
       throw createError({
         statusCode: 400,
         statusMessage: 'Exam parameter is required'
       })
     }
-
-    // Properly decode the URL parameter
-    const exam = decodeURIComponent(rawExam)
 
     const examPath = join(useRuntimeConfig().projectRoot, "/public/exams", exam)
     

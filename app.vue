@@ -21,7 +21,7 @@ watch(
       console.log("Updating exam details...")
       for (const exam of store.exams) {
         const details = (await $fetch(
-          `/api/exams/${exam.name}/details`
+          `/api/exams/${encodeURIComponent(exam.name)}/details`
         )) as unknown as ExamDetails
 
         store.addExamDetails(details)

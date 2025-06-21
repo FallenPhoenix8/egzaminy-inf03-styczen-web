@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import type { ExamDetails } from "~/types/Exam"
-
-// Get the route parameter and decode it properly
-const route = useRoute()
-const decodedExamName = decodeURIComponent(route.params.exam as string)
-
 const exam = ref<ExamDetails | null>(null)
 if (!examsStore().isLoadingExamsDetails) {
   exam.value =
     examsStore().examsDetails.find(
-      (exam) => exam.name === decodedExamName
+      (exam) => exam.name === useRoute().params.exam
     ) || null
 } else {
   watch(
@@ -18,7 +13,7 @@ if (!examsStore().isLoadingExamsDetails) {
       if (!examsStore().isLoadingExamsDetails) {
         exam.value =
           examsStore().examsDetails.find(
-            (exam) => exam.name === decodedExamName
+            (exam) => exam.name === useRoute().params.exam
           ) || null
       }
     }
